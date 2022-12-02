@@ -2,6 +2,8 @@ version: '3.9'
 
 services:
   pythonapp:
+    depends_on:
+      - db
     container_name: pythonapp
     image: pythonapp
     build: .
@@ -9,12 +11,14 @@ services:
       - "80:80"
     environment:
       - DATABASE_URL=postgresql://johndoe:password@db:5432/docker_db
-    depends_on:
-      - db
+      - DATABASE_USER=johndoe
+      - DATABASE_PASSWORD=password
+      - DATABASE_DB=docker_db
+    
   
   db:
     container_name: db
-    image: postgres:12
+    image: postgres:15.1  
     ports:
       - "5432:5432"
     environment:
@@ -22,5 +26,9 @@ services:
       - POSTGRES_USER=johndoe
       - POSTGRES_DB=docker_db
     volumes:
-      - pgdata:/var/lib/postgresql/data
- 
+      - ./db/data:/var/lib/postgresql/data
+    restart: always
+    command: -p 5432
+
+volumes:
+  pgdata: {}
