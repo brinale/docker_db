@@ -28,4 +28,4 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: ssh -o StrictHostKeyChecking=no -tt "${{ secrets.USERNAME }}@${{ secrets.HOST }}" "cd /var/www/docker_db && git pull && docker-compose up -d --build"
+        script: ssh -o StrictHostKeyChecking=no -tt "${{ secrets.USERNAME }}@${{ secrets.HOST }}" "cd /var/www/docker_db && docker-compose up -d --build"
