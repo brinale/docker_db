@@ -14,4 +14,4 @@
 4. Приложение можно открыть через браузер, введя localhost.
   
 ## Задание 8. Проектирование процесса CI/CD для веб-приложения
-Для реализации CI/CD был создан сервер на https://vds.selectel.ru/ru/. На сервер был установлен Docker и Docker Compose, а также был создан секретный ключ. Был написан скрипт deploy.yml деплоя данных из репозитория на сервер при каждом git push на основе шаблона https://github.com/appleboy/scp-action и запуска файла docker-compose.yml. Секретные данные для скрипта CI/CD хранятся в Secrets GitHub.
+Для реализации CI/CD был создан сервер на https://vds.selectel.ru/ru/. На сервер были установлены Docker и Docker Compose, а также был создан секретный ключ доступа к серверу. На основе шаблона https://github.com/appleboy/scp-action был написан скрипт deploy.yml для деплоя данных из репозитория на сервер при каждом git push и запуска файла docker-compose.yml. Секретные данные для скрипта CI/CD хранятся в Secrets GitHub.
