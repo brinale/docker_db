@@ -1,12 +1,15 @@
 name: Deploy
 
-on: [push]
+on: 
+  push:
+    branches:
+        -main
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v1
 
@@ -24,6 +27,8 @@ jobs:
     - name: Executing remote command
       uses: appleboy/ssh-action@master
       with:
+        using: composite
+        shell: bash
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
